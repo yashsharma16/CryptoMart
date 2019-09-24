@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+
+
+
+<div style="padding-top:20px!important">
+<div class="jumbotron">
+  <h1 class="display-4">CryptoMart</h1>
+  <p class="lead">CryptoMart is the simplest crypto platform to track top 50 crypto currency</p>
+  <hr class="my-4">
+  
+</div>
+</div>
+
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">NAME</th>
+      <th scope="col">PRICE</th>
+      <th scope="col">DAILY HIGH</th>
+      <th scope="col">DAILY LOW</th>
+      <th scope="col">MARKETCAP</th>
+    </tr>
+  </thead>
+  <tbody>
+  	{% for key,value in price.DISPLAY.items %}
+    <tr>
+      <td>{{ key }}</td>
+      <td>{{ value.USD.PRICE}}</td>
+      <td>{{ value.USD.HIGHDAY}}</td>
+      <td>{{ value.USD.LOWDAY}}</td>
+      <td>{{ value.USD.MKTCAP}}</td>
+    </tr>
+   {% endfor %}
+  </tbody>
+</table>
+
+
+
+<div class="container">
+<div class="row">
+
+
+	{% for x in api.Data %}
+  <div style="padding-top:20px!important">
+	<div class="col-md-4" >
+<div class="card" style="width: 18rem;">
+  <img src="{{ x.imageurl }}" class="card-img-top" alt="{{ x.source }}">
+  <div class="card-body">
+    <h5 class="card-title">{{ x.title }}</h5>
+    <p class="card-text">{{ x.body }}</p>
+    <a href="{{ x.guid }}" class="btn btn-primary">Read More</a>
+</div>
+</div>
+</div>
+</div>
+<br>
+    {% endfor %}
+</div>
+</div>
+
+   
+
+{% endblock %}
